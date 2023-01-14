@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
-import { BiPlus } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { ExperienceAction } from '../../redux/actions/ResumeActions';
+import { ExperienceAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 const Experience = () => {
     const navigate = useNavigate()
-    const { loading, success, dataLoaded } = useSelector(state => state.ExperienceReducer)
+    const { loading, dataLoaded } = useSelector(state => state.ExperienceReducer)
+    const { resume } = useSelector(state => state.GetResumeReducer)
+
     const [data, setData] = useState(
         {
             field: "",
@@ -20,6 +21,7 @@ const Experience = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         await dispatch(ExperienceAction(data))
+        
     }
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
@@ -34,7 +36,15 @@ const Experience = () => {
             })
             setHeadAfterAdd("Send Another Response")
         }
+
     }, [dataLoaded])
+
+    useEffect(() => {
+        if (resume &&( resume.projects.length > 0 || resume.experience.length > 0)) {
+            navigate('/resume/projects')
+        }
+    }, [navigate,resume])
+    
     return (
         <>
             {
@@ -63,9 +73,10 @@ const Experience = () => {
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/education')
                                 }}>Back</button>
-                                <button type="submit" className="btn btn-dark me-2">Add</button>
+                                <button type="submit" className="btn btn-dark me-2">Save</button>
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/projects')
+                                    dispatch(GetResumeAction())
                                 }}>Next</button>
                             </form>
                         </div>

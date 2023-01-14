@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { ProjectsAction, SkillsAction } from '../../redux/actions/ResumeActions';
+import { GetResumeAction, SkillsAction } from '../../redux/actions/ResumeActions';
 const Skills = () => {
     const navigate = useNavigate()
-    const { loading, success, dataLoaded } = useSelector(state => state.SkillsReducer)
+    const { loading, dataLoaded } = useSelector(state => state.SkillsReducer)
+    const { resume } = useSelector(state => state.GetResumeReducer)
+
     const [data, setData] = useState(
         {
             skill: "",
@@ -18,12 +20,12 @@ const Skills = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         await dispatch(SkillsAction(data))
+        
     }
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
     useEffect(() => {
-        console.log(1);
         if (dataLoaded) {
             setData({
                 skill: "",
@@ -31,9 +33,14 @@ const Skills = () => {
             })
             setHeadAfterAdd("Send Another Response")
             setSkiippable(true)
-            console.log(!skiippable);
         }
     }, [dataLoaded])
+
+    useEffect(() => {
+        if (resume && resume.skills.length > 0) {
+            navigate('/resume/achievemetns')
+        }
+    }, [resume, navigate])
     return (
         <>
             {
@@ -47,18 +54,19 @@ const Skills = () => {
                                     <label htmlFor="skill" className="form-label">Skill</label>
                                     <input type="text" value={data.skill} name='skill' className="form-control" id="skill" onChange={onChange} placeholder="Enter Your Name" required />
                                 </div>
-                                
+
                                 <div className="mb-3">
                                     <label htmlFor="description" className="form-label">Field</label>
                                     <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Name" required />
                                 </div>
-                                
+
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')
                                 }}>Back</button>
-                                <button type="submit" className="btn btn-dark me-2">Add</button>
+                                <button type="submit" className="btn btn-dark me-2">Save</button>
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/achievements')
+                                    dispatch(GetResumeAction())
                                 }} disabled={!skiippable}>Next</button>
                             </form>
                         </div>

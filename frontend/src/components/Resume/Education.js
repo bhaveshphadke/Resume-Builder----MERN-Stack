@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { EducationAction } from '../../redux/actions/ResumeActions';
+import { EducationAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 import Loader from '../layout/Loader'
 const Education = () => {
     const navigate = useNavigate()
-    const { loading, success, dataLoaded } = useSelector(state => state.EducationReducer)
+    const { loading, dataLoaded } = useSelector(state => state.EducationReducer)
+    const { resume } = useSelector(state => state.GetResumeReducer)
+
+
     const [data, setData] = useState({
         schoolname: "",
         juniorcollege: "",
@@ -19,14 +22,20 @@ const Education = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         await dispatch(EducationAction(data))
+        await dispatch(GetResumeAction())
 
     }
-
     useEffect(() => {
         if (dataLoaded) {
             navigate('/resume/experience')
         }
-    }, [dataLoaded])
+    }, [dataLoaded,navigate])
+
+    useEffect(() => {
+        if (resume && resume.education.length > 0) {
+            navigate('/resume/experience')
+        }
+    },[navigate,resume])
 
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
@@ -63,10 +72,10 @@ const Education = () => {
                                     <label htmlFor="degree" className="form-label">Year Of Completion</label>
                                     <input type="text" value={data.degree} name='degree' className="form-control" id="degree" onChange={onChange} placeholder="eg. Navi Mumbai, Panvel 410206" required />
                                 </div>
-                                <button TYPE="button" className="btn btn-dark me-2" onClick={() => {
+                                <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/personalinformation')
                                 }}>Back</button>
-                                <button type="submit" className="btn btn-dark me-2">Next</button>
+                                <button type="submit" className="btn btn-dark me-2">Save & Next</button>
                             </form>
                         </div>
                     </>

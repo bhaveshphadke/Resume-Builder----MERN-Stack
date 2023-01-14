@@ -8,10 +8,11 @@ export const VerifyUser = () => async (dispatch) => {
         const config = {
             withCredentials: true
         }
-        await axios.get('http://localhost:5500/api/v1/auth/verifyuser', config)
+        const {data} = await axios.get('http://localhost:5500/api/v1/auth/verifyuser', config)
 
         dispatch({
-            type: VERIFY_USER_SUCCESS
+            type: VERIFY_USER_SUCCESS,
+            payload:data
         })
 
     } catch (error) {

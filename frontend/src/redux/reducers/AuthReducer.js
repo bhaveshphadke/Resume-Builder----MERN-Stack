@@ -11,7 +11,8 @@ export const VerifyUserReducer = (state={},action)=>{
         case VERIFY_USER_SUCCESS:
            return({
             success:true,
-            loading:false
+            loading:false,
+            user:action.payload.user
            })
     
         case VERIFY_USER_FAIL:

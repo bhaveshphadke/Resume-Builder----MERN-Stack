@@ -4,3 +4,9 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+/* #link-hover:hover::after{
+    content: "somethibng";
+    position: absolute;
+    left: 0;
+        
+} */

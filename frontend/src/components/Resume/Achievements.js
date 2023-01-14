@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { AchievementAction, ProjectsAction, SkillsAction } from '../../redux/actions/ResumeActions';
+import { AchievementAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 const Achievements = () => {
     const navigate = useNavigate()
-    const { loading, success, dataLoaded } = useSelector(state => state.AchievementsReducer)
+    const { loading, dataLoaded } = useSelector(state => state.AchievementsReducer)
+    const { resume } = useSelector(state => state.GetResumeReducer)
+
+
     const [data, setData] = useState(
         {
-            achievement:""
+            achievement: ""
         }
     )
     const [headAfterAdd, setHeadAfterAdd] = useState("")
@@ -17,21 +20,27 @@ const Achievements = () => {
     const onSubmit = async (e) => {
         e.preventDefault()
         await dispatch(AchievementAction(data))
+        setSkiippable(true)
     }
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
     useEffect(() => {
-        console.log(1);
         if (dataLoaded) {
             setData({
-                achievement:""
+                achievement: ""
             })
             setHeadAfterAdd("Send Another Response")
             setSkiippable(true)
-            console.log(!skiippable);
         }
+
     }, [dataLoaded])
+
+    useEffect(() => {
+        if (resume && resume.achievements.length > 0) {
+            navigate('/')
+        }
+    })
     return (
         <>
             {
@@ -45,13 +54,14 @@ const Achievements = () => {
                                     <label htmlFor="achievement" className="form-label">achievement</label>
                                     <input type="text" value={data.achievement} name='achievement' className="form-control" id="achievement" onChange={onChange} placeholder="Enter Your Name" required />
                                 </div>
-                                
+
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')
                                 }}>Back</button>
-                                <button type="submit" className="btn btn-dark me-2">Add</button>
+                                <button type="submit" className="btn btn-dark me-2">Save</button>
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
-                                    navigate('/resume/templates')
+                                    navigate('/')
+                                    dispatch(GetResumeAction())
                                 }} disabled={!skiippable}>Submit</button>
                             </form>
                         </div>

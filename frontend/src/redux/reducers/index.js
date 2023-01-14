@@ -1,5 +1,5 @@
 import { LoginReducer, VerifyUserReducer, SignupUserReducer, SignoutUserReducer } from "./AuthReducer";
-import { PersonalInformationReducer, EducationReducer, ExperienceReducer, ProjectReducer, SkillsReducer, AchievementsReducer } from './ResumeReducers'
+import { PersonalInformationReducer, EducationReducer, ExperienceReducer, ProjectReducer, SkillsReducer, AchievementsReducer, GetResumeReducer } from './ResumeReducers'
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
     ExperienceReducer,
     ProjectReducer,
     SkillsReducer,
-    AchievementsReducer
+    AchievementsReducer,
+    GetResumeReducer
 })
 
 export default rootReducer;

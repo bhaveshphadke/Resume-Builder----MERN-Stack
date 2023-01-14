@@ -1,4 +1,4 @@
-import { ACHIEVEMENTS, ACHIEVEMENTS_FAIL, ACHIEVEMENTS_SUCCESS, EDUCATION, EDUCATION_FAIL, EDUCATION_SUCCESS, EXPERIENCE, EXPERIENCE_SUCCESS, PERSONAL_INFORMATION, PERSONAL_INFORMATION_FAIL, PERSONAL_INFORMATION_SUCCESS, PROJECTS, PROJECTS_FAIL, PROJECTS_SUCCESS, SKILLS, SKILLS_FAIL, SKILLS_SUCCESS } from "../constnants/ResumeConstants";
+import { ACHIEVEMENTS, ACHIEVEMENTS_FAIL, ACHIEVEMENTS_SUCCESS, EDUCATION, EDUCATION_FAIL, EDUCATION_SUCCESS, EXPERIENCE, EXPERIENCE_SUCCESS, GETRESUME, GETRESUME_FAIL, GETRESUME_SUCCESS, PERSONAL_INFORMATION, PERSONAL_INFORMATION_FAIL, PERSONAL_INFORMATION_SUCCESS, PROJECTS, PROJECTS_FAIL, PROJECTS_SUCCESS, SKILLS, SKILLS_FAIL, SKILLS_SUCCESS } from "../constnants/ResumeConstants";
 
 export const PersonalInformationReducer = (state={},action)=>{
     switch (action.type) {
@@ -156,6 +156,34 @@ export const AchievementsReducer = (state={},action)=>{
             }
     
         case ACHIEVEMENTS_FAIL:
+            return {
+                success:false,
+                loading:false
+            }
+    
+        default:
+            return state;
+    }
+}
+
+
+export const GetResumeReducer = (state={},action)=>{
+    switch (action.type) {
+        case GETRESUME:
+            return {
+                success:false,
+                loading:true
+            }
+    
+        case GETRESUME_SUCCESS:
+            return {
+                success:true,
+                loading:false,
+                dataLoaded:true,
+                resume:action.payload.resume
+            }
+    
+        case GETRESUME_FAIL:
             return {
                 success:false,
                 loading:false
