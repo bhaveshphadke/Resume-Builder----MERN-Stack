@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { LogoutUser, VerifyUser } from '../../redux/actions/AuthActions'
+import { GetResumeAction } from '../../redux/actions/ResumeActions'
 const Navbar = () => {
     const { success } = useSelector(state => state.VerifyUserReducer)
 
@@ -43,7 +44,11 @@ const Navbar = () => {
                                 <button className="btn btn-dark"><Link className="nav-link active" aria-current="page" to="/signup">Sign up</Link> </button>
                             </div>}
                             {success && <div className='mx-1'>
-                                <button className="btn btn-dark" onClick={async () => { await dispatch(LogoutUser()); await dispatch(VerifyUser()) }}>Signout</button>
+                                <button className="btn btn-dark" onClick={async () => { await dispatch(LogoutUser());
+                                 await dispatch(VerifyUser());
+                                 await dispatch(GetResumeAction())
+                                 console.log(1);
+                                 }}>Signout</button>
                             </div>}
                         </div>
                     </div>

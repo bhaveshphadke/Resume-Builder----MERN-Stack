@@ -32,6 +32,10 @@ const ResumeSchema = new Schema({
             about: {
                 type: String,
                 required: true
+            },
+            careerobjective:{
+                type:String,
+                required:true
             }
         }
     ],
@@ -97,7 +101,7 @@ const ResumeSchema = new Schema({
         {
             achievement: {
                 type: String,
-                required: true
+                required:true
             }
         }
     ],
@@ -112,6 +116,18 @@ const ResumeSchema = new Schema({
                 default:false
             },
             description:{
+                type:String,
+                required:true
+            }
+        }
+    ],
+    resumePDF:[
+        {
+            public_id:{
+                type:String,
+                required:true
+            },
+            secure_url:{
                 type:String,
                 required:true
             }

@@ -8,7 +8,7 @@ const { errorHandler } = require('../utils/ErrorHandler')
 exports.UploadPersonalInfo = CatchAsyncError(
     async (req, res, next) => {
         //Gathering user info from req.body object
-        const { name, role, email, phone, location, about } = req.body
+        const { name, role, email, phone, location, about,careerobjective } = req.body
 
         let resume = await Resume.findOne({ user: req.user})
         if (resume) {
@@ -28,7 +28,8 @@ exports.UploadPersonalInfo = CatchAsyncError(
                 email,
                 phone,
                 location,
-                about
+                about,
+                careerobjective
             }
         }
 

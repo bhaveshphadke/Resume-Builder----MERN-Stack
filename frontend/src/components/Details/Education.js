@@ -8,13 +8,13 @@ const Education = () => {
             {
                 resume &&
                 <>
-                    <div class="card mb-3 mx-5">
-                        <div class="card-body">
-                            <h3 class="card-title">Education</h3>
+                    <div className="card mb-3 mx-5">
+                        <div className="card-body">
+                            <h3 className="card-title">Education</h3>
                             {
                                 resume.education.map((item) => {
                                     return (
-                                        <>
+                                        <div key={item._id}>
                                             <p className="my-2 blockquote">CGPA : {item.cgpa}</p>
                                             <p className="my-2 blockquote">Junior College : {item.juniorcollege}</p>
                                             <p className="my-2 blockquote">Year Of Completion/Expected : {item.yearofcompletion}</p>
@@ -23,7 +23,7 @@ const Education = () => {
                                             <p className="my-2 blockquote">{item._id}</p>
                                             <p className="my-2 blockquote">College Name : {item.collegename}</p>
 
-                                        </>
+                                      </div>
                                     )
                                 })
                             }

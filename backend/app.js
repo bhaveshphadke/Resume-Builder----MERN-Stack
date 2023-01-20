@@ -7,6 +7,7 @@ const path = require('path')
 const connectToMongo = require('./db')
 const error = require('./middlewares/Error')
 const cloudinary = require('cloudinary')
+const  { CloudinaryStorage } = require("multer-storage-cloudinary"); 
 
 // Utils
 const app = express()
@@ -27,18 +28,33 @@ cloudinary.config({
     api_key: 576223434431196,
     api_secret: 'dUhRSNdYUPTfj7yagBrK0sEpNAA'
 })
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: "avatar",
+    allowedFormats: ["jpg", "png", "pdf"],
+  });
+  
+  
 
 // Routes
 const authRouter = require(path.join(__dirname, 'routes/auth'))
 const resumeRouter = require(path.join(__dirname, 'routes/resume'))
+const buildRouter = require(path.join(__dirname, 'routes/build'))
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/resume', resumeRouter)
+app.use('/api/v1/build', buildRouter)
+app.use('/',express.static(path.join('static')))
+
 
 
 
 // Post Middleware
 app.use(error)
+
+app.get('/',(req,res)=>{
+    res.send('s')
+})
 
 // App Listening
 app.listen(PORT, (err) => {

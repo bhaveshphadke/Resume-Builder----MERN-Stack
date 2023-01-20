@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { GetResumeAction } from '../../redux/actions/ResumeActions';
 import Details from '../Details/Details';
 import './home.css'
 const Home = () => {
   const { resume } = useSelector(state => state.GetResumeReducer)
+  const  resume_success  = useSelector(state => state.GetResumeReducer)
 
   const { success } = useSelector((state) => state.VerifyUserReducer)
 
@@ -14,7 +16,16 @@ const Home = () => {
     if(resume){
       setGetStartedText("Complete Your Resume")
     }
+    else{
+      setGetStartedText("Get Started for Free")
+    }
+    
   },[resume])
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(GetResumeAction())
+    console.log(1);
+  }, [dispatch])
   return (
     <>
       {

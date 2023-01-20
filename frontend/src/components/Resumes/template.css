@@ -1,0 +1,86 @@
+.header>div {
+    display: flex;
+    align-items: center;
+  }
+
+  .header>div>div {
+    margin-right: 10px;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .phone,
+  .email {
+    font-size: 1rem;
+  }
+
+  .data-container {
+    display: flex;
+  }
+  .data-container > .left {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    width: 50%;
+    border-right: 1px solid black;
+  }
+  .data-container > .right {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    width: 50%;
+  }
+
+  .data-container>.left>div, .data-container > .right > div {
+    padding: 10px 20px 10px 10px;
+
+  }
+
+  
+
+  .career-objective>p {
+    padding-right: 20px;
+    text-align: start;
+  }
+
+  .education {}
+
+  .skills>ul {
+    /* list-style: none; */
+    text-align: start;
+    margin-left: -20px;
+
+  }
+
+  .skills>ul>div>li {
+    margin: 0 5px;
+
+  }
+
+  .skills>ul>div {
+    margin: 10px 0;
+    display: flex;
+  }
+
+  .skills>ul>div>p {
+    margin: 0;
+  }
+
+  .achievements>li {
+    margin-bottom: 5px;
+  }
+
+  .projects>div {
+    padding-right: 10px;
+  }
+
+  .projects>div>h3 {
+    font-weight: 200;
+    margin: 0;
+  }
+  .projects>div>p {
+    margin: 0;
+    margin-bottom: 10px;
+  }

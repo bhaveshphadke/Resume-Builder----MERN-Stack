@@ -14,7 +14,8 @@ const PersonalInformation = () => {
         email: "",
         phone: "",
         location: "",
-        about: ""
+        about: "",
+        careerobjective:""
     })
 
     const dispatch = useDispatch()
@@ -69,6 +70,10 @@ const PersonalInformation = () => {
                                 <div className="mb-3">
                                     <label htmlFor="about" className="form-label">About</label>
                                     <textarea className="form-control" name='about' onChange={onChange} value={data.about} id="about" rows="3" placeholder='eg. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, adipisci!' required></textarea>
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="careerobjective" className="form-label">About</label>
+                                    <textarea className="form-control" name='careerobjective' onChange={onChange} value={data.careerobjective} id="about" rows="3" placeholder='eg. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, adipisci!' required></textarea>
                                 </div>
 
                                 <button type="submit" className="btn btn-dark">Save & Next</button>

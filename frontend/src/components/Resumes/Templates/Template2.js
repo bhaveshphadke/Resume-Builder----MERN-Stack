@@ -1,0 +1,181 @@
+import React from 'react'
+import {  useSelector } from 'react-redux'
+const Template2 = () => {
+  
+    const { resume } = useSelector((state) => state.GetResumeReducer)
+    return (
+        <>
+        {
+            resume &&
+
+
+            <>
+                <div className="container" id='container'>
+                    {
+                        resume.personalInfo &&
+                        <div className="header">
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                backgroundColor:'red'
+                            }}>
+                                <div className="name" id="name" style={{
+                                    marginRight: '10px',
+                                    fontSize: '2.5vmax'
+                                }}>{resume.personalInfo[0].name}</div>
+                                <div className="phone" style={{
+                                    marginRight: '10px',
+                                    fontSize: '1.2vmax'
+                                }}> +91{resume.personalInfo[0].phone} </div>
+                                <div className="email" style={{
+                                    marginRight: '10px',
+                                    fontSize: '1.2vmax'
+                                }}> {resume.personalInfo[0].email} </div>
+                            </div>
+                            <div className="about" style={{
+                                fontSize: '1.5vmax'
+                            }}>{resume.personalInfo[0].about}</div>
+                        </div>
+                    }
+                    <hr />
+                    <div className="data-container" style={{
+                        display: 'flex'
+                    }}>
+                        <div className="left" style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: '50%',
+                            borderRight: '1px solid black'
+                        }}>
+                            <div className="career-objective">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Career Objective</h2>
+                                <p style={{
+                                    paddingRight: '20px',
+                                    textAign: 'start',
+                                    fontSize: '1.2vmax'
+                                }}>{resume.personalInfo[0].careerobjective}</p>
+                                <hr />
+                            </div>
+                            <div className="education">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Education</h2>
+                                <p style={{
+                                    fontSize: '1.5vmax'
+                                }}><b>College</b> : {resume.education[0].collegename} ({resume.education[0].yearofcompletion})</p>
+                                <p style={{
+                                    fontSize: '1.2vmax'
+                                }}><b>CGPA</b> : {resume.education[0].cgpa} </p>
+                                <hr style={{
+                                    width: '70%'
+                                }} />
+                                <p style={{
+                                    fontSize: '1.5vmax'
+                                }}>{resume.education[0].juniorcollege}</p>
+                                <p style={{
+                                    fontSize: '1.5vmax'
+                                }}><b>PCMB</b></p>
+                                <hr />
+                            </div>
+                            <div className="skills">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Skills</h2>
+                                <ul style={{
+                                    textAlign: 'start',
+                                    marginLeft: '-20px'
+
+                                }}>
+
+                                    {
+                                        resume.skills.map((item) => {
+                                            return (
+                                                <div key={item._id} style={{
+                                                    margin: '10px 0',
+                                                    display: 'flex'
+                                                }}>
+                                                    <li className="skill" style={{
+                                                        margin: '0 5px',
+                                                        fontSize: '1.2vmax'
+                                                    }}>{item.skill} : </li>
+                                                    <p style={{
+                                                        margin: '0',
+                                                        fontSize: '1.2vmax'
+                                                    }}>{item.description}</p>
+                                                </div>
+                                            )
+                                        })
+                                    }
+
+                                </ul>
+
+                            </div>
+
+
+                            <div className="personal-details"></div>
+                        </div>
+                        <div className="right" style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: '50%',
+                            padding: '0 20px',
+                            marginTop:'0'
+                        }}>
+                            <div className="projects">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Projects</h2>
+                                {
+                                    resume.projects.map((item) => {
+                                        return (
+                                            <div key={item._id} style={{
+                                                paddingRight: '10px'
+                                            }}>
+                                                <h3 className="project-name" style={{
+                                                    fontWeight: '200',
+                                                    margin: '0',
+                                                    fontSize: '1.2vmax'
+                                                }}>{item.projectname}</h3>
+                                                <p style={{
+                                                    margin: 0,
+                                                    marginBottom: '10px',
+                                                    fontSize: '1.2vmax'
+                                                }}>{item.description}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+
+                                <hr />
+
+                            </div>
+                            <div className="achievements">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Achievements</h2>
+                                {
+                                    resume.achievements.map((item) => {
+                                        return (
+                                            <li key={item._id} style={{
+                                                marginBottom: '5px',
+                                                fontSize: '1.2vmax'
+                                            }}>{item.achievement}</li>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <hr />
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </>
+        }
+    </>
+    )
+}
+
+export default Template2
