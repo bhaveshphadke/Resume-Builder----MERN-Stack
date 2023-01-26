@@ -1,0 +1,102 @@
+@media screen and (max-width: 800px) {
+  .name {
+    font-size: 1.6rem !important;
+  }
+  .phone {
+    font-size: 0.7rem !important;
+  }
+  .email {
+    font-size: 0.7rem !important;
+  }
+  .about {
+    font-size: 0.9rem !important;
+  }
+  .data-container > .left > div {
+    padding: 0;
+  }
+  .career-objective > h2 {
+    font-size: 1rem !important;
+  }
+  .career-objective > p {
+    font-size: 0.7rem !important;
+  }
+  .education > h2 {
+    font-size: 1rem !important;
+  }
+  .education > p {
+    font-size: 0.7rem !important;
+  }
+  .achievements > h2 {
+    font-size: 1rem !important;
+  }
+  .achievements li {
+    font-size: 0.7rem !important;
+  }
+  .skills > h2 {
+    font-size: 1rem !important;
+  }
+  .skills li {
+    font-size: 0.7rem !important;
+  }
+  .projects > h2 {
+    font-size: 1rem !important;
+  }
+  .projects li {
+    font-size: 0.7rem !important;
+  }
+  .projects p {
+    font-size: 0.7rem !important;
+  }
+  .projects {
+    padding: 0 2px 10px 10px !important;
+  }
+
+  .right {
+    padding: 0 2px 10px 10px !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  .data-container > .left > div {
+    padding: 0;
+  }
+  .career-objective > h2 {
+    font-size: 1rem !important;
+  }
+  .career-objective > p {
+    font-size: 0.7rem !important;
+  }
+  .education > h2 {
+    font-size: 1rem !important;
+  }
+  .education > p {
+    font-size: 0.7rem !important;
+  }
+  .achievements > h2 {
+    font-size: 1rem !important;
+  }
+  .achievements li {
+    font-size: 0.7rem !important;
+  }
+  .skills > h2 {
+    font-size: 1rem !important;
+  }
+  .skills li {
+    font-size: 0.7rem !important;
+  }
+  .projects > h2 {
+    font-size: 1rem !important;
+  }
+  .projects li {
+    font-size: 0.7rem !important;
+  }
+  .projects p {
+    font-size: 0.7rem !important;
+  }
+  .projects {
+    padding: 0 2px 10px 10px !important;
+  }
+
+  .right {
+    padding: 0 2px 10px 10px !important;
+  }
+}

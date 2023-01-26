@@ -13,7 +13,7 @@ export const PersonalInformationAction = (userData) => async (dispatch) => {
             },
             withCredentials: true
         }
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/personalinfo', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/personalinfo`, userData, config)
         dispatch({
             type: PERSONAL_INFORMATION_SUCCESS,
             data
@@ -38,7 +38,7 @@ export const EducationAction = (userData) => async (dispatch) => {
             withCredentials: true
         }
 
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/education', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/education`, userData, config)
 
         dispatch({
             type: EDUCATION_SUCCESS,
@@ -65,7 +65,7 @@ export const ExperienceAction = (userData) => async (dispatch) => {
             },
             withCredentials: true
         }
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/experience', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/experience`, userData, config)
 
         dispatch({
             type: EXPERIENCE_SUCCESS,
@@ -91,7 +91,7 @@ export const ProjectsAction = (userData) => async (dispatch) => {
             withCredentials: true
         }
 
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/projects', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/projects`, userData, config)
 
         dispatch({
             type: PROJECTS_SUCCESS,
@@ -117,7 +117,7 @@ export const SkillsAction = (userData) => async (dispatch) => {
             withCredentials: true
         }
 
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/skills', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/skills`, userData, config)
 
         dispatch({
             type: SKILLS_SUCCESS,
@@ -143,7 +143,7 @@ export const AchievementAction = (userData) => async (dispatch) => {
             withCredentials: true
         }
 
-        const { data } = await axios.post('http://localhost:5500/api/v1/resume/achievements', userData, config)
+        const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/resume/achievements`, userData, config)
 
         dispatch({
             type: ACHIEVEMENTS_SUCCESS,
@@ -170,7 +170,7 @@ export const GetResumeAction = () => async (dispatch) => {
             withCredentials:true
         }
 
-        const {data} = await axios.get('http://localhost:5500/api/v1/resume/getresume',config)
+        const {data} = await axios.get(`${process.env.REACT_APP_API_HOST}/resume/getresume`,config)
         dispatch({
             type:GETRESUME_SUCCESS,
             payload:data

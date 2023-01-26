@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { VerifyUser } from '../../redux/actions/AuthActions'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Profile = () => {
     const { user } = useSelector(state => state.VerifyUserReducer)

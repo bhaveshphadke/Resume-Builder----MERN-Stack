@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import PersonalUpdate from '../Update/PersonalUpdate'
 
 const Personal = () => {
-
     const { resume } = useSelector(state => state.GetResumeReducer)
     return (
         <>
@@ -11,7 +11,8 @@ const Personal = () => {
                 <>
                     <div className="card mb-3 mx-5">
                         <div className="card-body">
-                            <h3 className="card-title">Personal Information</h3>
+                
+                            <h3 className="card-title">Personal Information             <PersonalUpdate info={resume.personalInfo[0]} /> </h3>
                             {
                                 resume.personalInfo.map((item) => {
                                     return (
@@ -21,10 +22,9 @@ const Personal = () => {
                                             <p className="my-2 blockquote">About : {item.about}</p>
                                             <p className="my-2 blockquote">Role : {item.role}</p>
                                             <p className="my-2 blockquote">Phone : {item.phone}</p>
-                                            <p className="my-2 blockquote">{item._id}</p>
                                             <p className="my-2 blockquote">Location : {item.location}</p>
 
-                                    </div>
+                                        </div>
                                     )
                                 })
                             }

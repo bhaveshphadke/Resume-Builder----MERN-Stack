@@ -13,7 +13,7 @@ const Details = () => {
   console.log(user);
   return (
     <>
-    {user && <h2 className='m-5 text-center'>Hello, {user.username}</h2>}
+    {user && <h2 className='m-5 text-center'>Welcome, {user.username}</h2>}
       {
         resume &&
         <>

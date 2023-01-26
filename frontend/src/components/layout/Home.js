@@ -6,7 +6,6 @@ import Details from '../Details/Details';
 import './home.css'
 const Home = () => {
   const { resume } = useSelector(state => state.GetResumeReducer)
-  const  resume_success  = useSelector(state => state.GetResumeReducer)
 
   const { success } = useSelector((state) => state.VerifyUserReducer)
 

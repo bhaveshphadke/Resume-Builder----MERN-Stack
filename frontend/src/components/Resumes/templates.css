@@ -1,0 +1,15 @@
+.template-container{
+    display: flex;
+    margin: auto;
+    width:100%;
+    flex-wrap:wrap;    
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.each-template{
+    
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 2px;
+}

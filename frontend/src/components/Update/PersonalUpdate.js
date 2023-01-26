@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch} from 'react-redux'
 import { GetResumeAction, PersonalInformationAction } from '../../redux/actions/ResumeActions'
-import { useNavigate } from 'react-router-dom'
-import Loader from '../layout/Loader'
-const PersonalInformation = () => {
-    const navigate = useNavigate()
-    const { loading, dataLoaded } = useSelector(state => state.PersonalInformationReducer)
-    const { resume } = useSelector(state => state.GetResumeReducer)
+import { AiOutlineEdit } from 'react-icons/ai'
 
+
+const PersonalInfo = (props) => {
+    const info = props.info
+
+    const ref = useRef()
     const [data, setData] = useState({
         name: "",
         role: "",
@@ -15,36 +15,42 @@ const PersonalInformation = () => {
         phone: "",
         location: "",
         about: "",
-        careerobjective:""
+        careerobjective: ""
     })
 
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        ref.current.click()
         await dispatch(PersonalInformationAction(data))
         await dispatch(GetResumeAction())
     }
-    useEffect(() => {
-        if (dataLoaded) {
-            navigate('/resume/education')
-        }
-
-    }, [dataLoaded, navigate])
-
-    useEffect(() => {
-        if (resume && resume.personalInfo.length > 0) {
-            navigate('/resume/education')
-        }
-    },[navigate,resume])
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
     }
+
+    useEffect(() => {
+        setData({
+            name: info.name,
+            role: info.role,
+            email: info.email,
+            phone: info.phone,
+            location: info.location,
+            about: info.about,
+            careerobjective: info.careerobjective
+        })
+    }, [info])
     return (
         <>
-            {
-                loading ? <Loader /> :
-                    <>
-                        <div className="container my-5">
+            <AiOutlineEdit data-bs-toggle="modal" data-bs-target="#PersonalUpdate" />
+            <div class="modal fade" id="PersonalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Personal Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="container">
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Personal Information</h2>
                                 <div className="mb-3">
@@ -75,14 +81,17 @@ const PersonalInformation = () => {
                                     <label htmlFor="careerobjective" className="form-label">Carreer Objective</label>
                                     <textarea className="form-control" name='careerobjective' onChange={onChange} value={data.careerobjective} id="about" rows="3" placeholder='eg. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque, adipisci!' required></textarea>
                                 </div>
-
-                                <button type="submit" className="btn btn-dark">Save & Next</button>
+                                <div class="modal-footer">
+                                    <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
                             </form>
                         </div>
-                    </>
-            }
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
 
-export default PersonalInformation
+export default PersonalInfo

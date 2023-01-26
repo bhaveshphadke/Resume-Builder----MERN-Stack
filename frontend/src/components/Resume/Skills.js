@@ -38,9 +38,9 @@ const Skills = () => {
 
     useEffect(() => {
         if (resume && resume.skills.length > 0) {
-            navigate('/resume/achievemetns')
+            navigate('/resume/achievements')
         }
-    }, [resume, navigate])
+    }, [resume,navigate])
     return (
         <>
             {
@@ -52,12 +52,12 @@ const Skills = () => {
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
                                 <div className="mb-3">
                                     <label htmlFor="skill" className="form-label">Skill</label>
-                                    <input type="text" value={data.skill} name='skill' className="form-control" id="skill" onChange={onChange} placeholder="Enter Your Name" required />
+                                    <input type="text" value={data.skill} name='skill' className="form-control" id="skill" onChange={onChange} placeholder="Enter Your SKill" required />
                                 </div>
 
                                 <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Field</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Name" required />
+                                    <label htmlFor="description" className="form-label">Description or Level</label>
+                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="eg.  Intermediate" required />
                                 </div>
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {

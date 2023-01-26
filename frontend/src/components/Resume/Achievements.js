@@ -40,7 +40,7 @@ const Achievements = () => {
         if (resume && resume.achievements.length > 0) {
             navigate('/')
         }
-    })
+    },[resume,navigate])
     return (
         <>
             {
@@ -52,8 +52,9 @@ const Achievements = () => {
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
                                 <div className="mb-3">
                                     <label htmlFor="achievement" className="form-label">achievement</label>
-                                    <input type="text" value={data.achievement} name='achievement' className="form-control" id="achievement" onChange={onChange} placeholder="Enter Your Name" required />
+                                    <input type="text" value={data.achievement} name='achievement' className="form-control" id="achievement" onChange={onChange} placeholder="Enter Your Achivement" required />
                                 </div>
+                                
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')

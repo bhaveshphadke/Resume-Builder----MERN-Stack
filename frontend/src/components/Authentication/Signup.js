@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import profile from '../../images/profile.png'
 import { SignupUser, VerifyUser } from '../../redux/actions/AuthActions'
+import Alert from '../layout/Alert'
 import Loader from '../layout/Loader'
 const Signup = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { success, loading } = useSelector(state => state.SignupUserReducer)
+    const { loading, signup, message } = useSelector(state => state.SignupUserReducer)
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
@@ -35,17 +36,25 @@ const Signup = () => {
         e.preventDefault()
         await dispatch(SignupUser(credentials, avatar))
         await dispatch(VerifyUser())
-        navigate('/')
 
     }
-    useEffect(()=>{
-        
-    })
+    useEffect(() => {
+        if (signup === false) {
+            navigate('/signup')
+        } else if (signup === true) {
+            navigate('/')
+        }
+    }, [signup, navigate])
     return (
         <>
             {
+                signup === false && message &&
+                <Alert message={message} success="danger" />
+            }
+            {
                 loading ? <Loader /> :
                     <div className="container my-5">
+
                         <form onSubmit={onSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email</label>

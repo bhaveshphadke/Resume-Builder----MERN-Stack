@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LoginUser, VerifyUser } from '../../redux/actions/AuthActions'
 import Loader from '../layout/Loader'
 import { useNavigate } from 'react-router-dom'
+import Alert from '../layout/Alert'
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { loading, success } = useSelector(state => state.LoginReducer)
+    const { loading, loggedin, message } = useSelector(state => state.LoginReducer)
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -22,21 +23,29 @@ const Login = () => {
         e.preventDefault()
         await dispatch(LoginUser(credentials))
         await dispatch(VerifyUser())
-        navigate('/')
+        console.log(loggedin);
 
     }
     useEffect(() => {
-        console.log(success);
-    }, [dispatch])
+        if (loggedin === false) {
+            navigate('/signin')
+        } else if (loggedin === true) {
+            navigate('/')
+        }
+        console.log(1);
+        console.log(process.env.REACT_APP_API_HOST);
+        console.log(process.env.REACT_APP_API_HOST);
+    }, [loggedin, navigate])
 
     return (
         <>
 
             {loading ? <Loader /> :
                 <>
-                    <>
-                        {/* { !success&& <Alert/>} */}
-                    </>
+                    {
+                        loggedin === false && message &&
+                        <Alert message={message} success="danger" />
+                    }
                     <div className="container my-5">
                         <form onSubmit={onSubmit}>
                             <div className="mb-3">

@@ -51,13 +51,13 @@ const Projects = () => {
                                 <h2 className='text-center my-2'>Projects</h2>
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
                                 <div className="mb-3">
-                                    <label htmlFor="projectname" className="form-label">Field</label>
-                                    <input type="text" value={data.projectname} name='projectname' className="form-control" id="projectname" onChange={onChange} placeholder="Enter Your Name" required />
+                                    <label htmlFor="projectname" className="form-label">Project Name</label>
+                                    <input type="text" value={data.projectname} name='projectname' className="form-control" id="projectname" onChange={onChange} placeholder="Enter Your Project Name" required />
                                 </div>
 
                                 <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Field</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Name" required />
+                                    <label htmlFor="description" className="form-label">Description</label>
+                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Projects Description" required />
                                 </div>
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {

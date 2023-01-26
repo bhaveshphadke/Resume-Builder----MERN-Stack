@@ -53,6 +53,7 @@ function App() {
               {resume && resume.skills.length > 0 && <Route exact path='/resume/achievements' element={<Achievements />}></Route>}
               {resume && <Route exact path='/resume/templates' element={<Templates />}></Route>}
               {resume && resume.achievements.length > 0 && <Route exact path='/template/:number' element={<Template />}></Route>}
+              {/* {resume && <Route exact path='/resume/update/personalInfo' element={<PersonalInfo />}></Route>} */}
             </>
           }
 

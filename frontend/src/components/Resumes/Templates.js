@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import Loader from '../layout/Loader';
-import Template1 from './Templates/Template1';
-import Template2 from './Templates/Template2';
+import './templates.css'
+import template1 from '../../images/template1.png'
+import template2 from '../../images/template2.png'
 
 const Templates = () => {
   const { resume } = useSelector((state) => state.GetResumeReducer)
@@ -12,30 +12,18 @@ const Templates = () => {
       {
         resume &&
         <>
-          <div className="conatainer d-flex" style={{
-            margin: 'auto',
-            width:'80%',
-            flexWrap:'wrap',
-            alignItems:'center',
-            justifyContent:'center'
-          }}>
-            <div className="each-template" style={{
-
-              border: '2px solid black',
-              margin: '10px',
-              borderRadius: '10px',
-              width:'100%'
-            }}>
-              <Link className='nav-link' to="/template/1"> <Template1 /></Link>
+        <h1 className='text-center my-4'>Select Templates</h1>
+          <div className="conatainer template-container">
+            <div className="each-template">
+              <Link className='nav-link' to="/template/1"> <img src={template1} alt="" style={{
+                width:'250px'
+              }}/>
+              </Link>
             </div>
-            <div className="each-template" style={{
-
-              border: '2px solid black',
-              margin: '10px',
-              borderRadius: '10px',
-              width:'100%'
-            }}>
-              <Link className='nav-link' to="/template/2"><Template2 /></Link>
+            <div className="each-template">
+              <Link className='nav-link' to="/template/2"><img src={template2} alt="" style={{
+                width:'250px'
+              }}/></Link>
             </div>
 
           </div>

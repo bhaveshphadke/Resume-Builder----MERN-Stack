@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import './template1.css'
 const Template1 = () => {
 
     const { resume } = useSelector((state) => state.GetResumeReducer)
@@ -16,11 +17,12 @@ const Template1 = () => {
                             <div className="header">
                                 <div style={{
                                     display: 'flex',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap'
                                 }}>
                                     <div className="name" id="name" style={{
                                         marginRight: '10px',
-                                        fontSize: '2.5vmax'
+                                        fontSize: '3.5vmax'
                                     }}>{resume.personalInfo[0].name}</div>
                                     <div className="phone" style={{
                                         marginRight: '10px',
@@ -120,7 +122,7 @@ const Template1 = () => {
                                 flexDirection: 'column',
                                 width: '50%',
                                 padding: '0 20px',
-                                marginTop:'0'
+                                marginTop: '0'
                             }}>
                                 <div className="projects">
                                     <h2 style={{
@@ -132,11 +134,11 @@ const Template1 = () => {
                                                 <div key={item._id} style={{
                                                     paddingRight: '10px'
                                                 }}>
-                                                    <h3 className="project-name" style={{
-                                                        fontWeight: '200',
+                                                    <li className="project-name" style={{
+                                                        fontWeight: '500',
                                                         margin: '0',
                                                         fontSize: '1.6vmax'
-                                                    }}>{item.projectname}</h3>
+                                                    }}>{item.projectname}</li>
                                                     <p style={{
                                                         margin: 0,
                                                         marginBottom: '10px',
