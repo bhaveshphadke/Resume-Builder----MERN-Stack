@@ -126,9 +126,9 @@ exports.GetUserDetailsAdmin = CatchAsyncError(
 
 // Verify User -- GET 
 exports.VerifyUserAuth = async (req, res, next) => {
-    console.log(1);
+    console.log(5);
     const user = await Users.findById(req.user).select('-password');
-
+    console.log(7)
     if (!user) {
         return next(errorHandler('Not Authorised', 403))
     }
