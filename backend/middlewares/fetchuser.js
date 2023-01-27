@@ -10,6 +10,7 @@ exports.VerifyUser = CatchAsyncError(
     
     async(req,res,next)=>{
         // Getting token from the cookies
+        console.log(7)
         const {token} = req.cookies
         // verifying token
         if( token === 'j:null' ||token===undefined || token === null || !token){
