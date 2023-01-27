@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch} from 'react-redux'
 import { AchievementAction, GetResumeAction } from '../../redux/actions/ResumeActions'
 import { AiOutlineEdit } from 'react-icons/ai'
+import AchievementForm from '../CommonForms/AchievementForm'
 
 const AchievementsUpdate = (props) => {
     const info = props.info
@@ -37,17 +38,13 @@ const AchievementsUpdate = (props) => {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update Achievement</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form onSubmit={onSubmit}>
-                                <h2 className='text-center my-2'>Achievement </h2>
-                                <div className="mb-3">
-                                    <label htmlFor="achievement" className="form-label">achievement</label>
-                                    <input type="text" value={data.achievement} name='achievement' className="form-control" id="achievement" onChange={onChange} placeholder="Enter Your Achivement" required />
-                                </div>
-
+                                <h2 className='text-center my-2'>Achievement</h2>
+                                <AchievementForm data={data} onChange={onChange}/>
 
                                 <div class="modal-footer">
                             <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

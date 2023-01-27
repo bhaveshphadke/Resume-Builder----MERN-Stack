@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { AchievementAction, GetResumeAction } from '../../redux/actions/ResumeActions';
+import AchievementForm from '../CommonForms/AchievementForm';
 const Achievements = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.AchievementsReducer)
@@ -50,11 +51,7 @@ const Achievements = () => {
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Achievement </h2>
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
-                                <div className="mb-3">
-                                    <label htmlFor="achievement" className="form-label">achievement</label>
-                                    <input type="text" value={data.achievement} name='achievement' className="form-control" id="achievement" onChange={onChange} placeholder="Enter Your Achivement" required />
-                                </div>
-                                
+                               <AchievementForm data={data} onChange={onChange}/>
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')

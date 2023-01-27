@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { ExperienceAction, GetResumeAction } from '../../redux/actions/ResumeActions';
+import ExperienceForm from '../CommonForms/ExperienceForm';
 const Experience = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.ExperienceReducer)
@@ -54,22 +55,7 @@ const Experience = () => {
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Experinece ( OPTIONAL ) </h2>
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
-                                <div className="mb-3">
-                                    <label htmlFor="field" className="form-label">Working in</label>
-                                    <input type="text" value={data.field} name='field' className="form-control" id="field" onChange={onChange} placeholder="eg. IT Company(name of company)" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="years" className="form-label">Years of Working</label>
-                                    <input type="text" value={data.years} name='years' className="form-control" id="years" onChange={onChange} placeholder="eg. 5" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="role" className="form-label">Job Type(role)</label>
-                                    <input type="text" value={data.role} name='role' className="form-control" id="role" onChange={onChange} placeholder="eg. Data Analyst" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Detail</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" aria-describedby="description" onChange={onChange} placeholder="eg.  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore non sequi sint?" />
-                                </div>
+                                <ExperienceForm data={data} onChange={onChange}/>
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/education')
                                 }}>Back</button>

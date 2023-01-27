@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch} from 'react-redux'
 import { GetResumeAction, ProjectsAction } from '../../redux/actions/ResumeActions'
 import { AiOutlineEdit } from 'react-icons/ai'
+import ProjectForm from '../CommonForms/ProjectForm'
 const ProjectsUpdate = (props) => {
     const info = props.info
     const modal = props.modal
@@ -39,23 +40,13 @@ const ProjectsUpdate = (props) => {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update Project</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Projects</h2>
-                                <div className="mb-3">
-                                    <label htmlFor="projectname" className="form-label">Project Name</label>
-                                    <input type="text" value={data.projectname} name='projectname' className="form-control" id="projectname" onChange={onChange} placeholder="Enter Your Project Name" required />
-                                </div>
-
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Description</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Projects Description" required />
-                                </div>
-
-
+                                <ProjectForm data={data} onChange={onChange}/>
                                 <div class="modal-footer">
                                     <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary">Save changes</button>

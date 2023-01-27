@@ -12,7 +12,10 @@ const Personal = () => {
                     <div className="card mb-3 mx-5">
                         <div className="card-body">
                 
-                            <h3 className="card-title">Personal Information             <PersonalUpdate info={resume.personalInfo[0]} /> </h3>
+                           <div className='d-flex align-items-center'>
+                           <h3 className="card-title mx-2">Personal Information</h3>
+                            <PersonalUpdate info={resume.personalInfo[0]} /> 
+                           </div>
                             {
                                 resume.personalInfo.map((item) => {
                                     return (

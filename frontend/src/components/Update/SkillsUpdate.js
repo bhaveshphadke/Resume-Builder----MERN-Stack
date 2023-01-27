@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch} from 'react-redux'
 import { GetResumeAction, SkillsAction } from '../../redux/actions/ResumeActions'
 import { AiOutlineEdit } from 'react-icons/ai'
+import SkillsForm from '../CommonForms/SkillsForm'
 
 const SkillsUpdate = (props) => {
     const info = props.info
@@ -44,21 +45,13 @@ const SkillsUpdate = (props) => {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update Skills</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                         <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Skills </h2>
-                                <div className="mb-3">
-                                    <label htmlFor="skill" className="form-label">Skill</label>
-                                    <input type="text" value={data.skill} name='skill' className="form-control" id="skill" onChange={onChange} placeholder="Enter Your SKill" required />
-                                </div>
-
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Description or Level</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="eg.  Intermediate" required />
-                                </div>
+                                <SkillsForm data={data} onChange={onChange}/>
 
                                 <div class="modal-footer">
                             <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

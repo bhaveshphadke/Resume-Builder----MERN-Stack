@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetResumeAction, ProjectsAction } from '../../redux/actions/ResumeActions';
+import ProjectForm from '../CommonForms/ProjectForm';
 const Projects = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.ProjectReducer)
@@ -50,15 +51,8 @@ const Projects = () => {
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Projects</h2>
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
-                                <div className="mb-3">
-                                    <label htmlFor="projectname" className="form-label">Project Name</label>
-                                    <input type="text" value={data.projectname} name='projectname' className="form-control" id="projectname" onChange={onChange} placeholder="Enter Your Project Name" required />
-                                </div>
+                                <ProjectForm data={data} onChange={onChange}/>
 
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Description</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="Enter Your Projects Description" required />
-                                </div>
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')

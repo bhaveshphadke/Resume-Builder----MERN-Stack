@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetResumeAction, SkillsAction } from '../../redux/actions/ResumeActions';
+import SkillsForm from '../CommonForms/SkillsForm';
 const Skills = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.SkillsReducer)
@@ -50,15 +51,7 @@ const Skills = () => {
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Skills </h2>
                                 <h3 className='text-center my-2'>{headAfterAdd} </h3>
-                                <div className="mb-3">
-                                    <label htmlFor="skill" className="form-label">Skill</label>
-                                    <input type="text" value={data.skill} name='skill' className="form-control" id="skill" onChange={onChange} placeholder="Enter Your SKill" required />
-                                </div>
-
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Description or Level</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" onChange={onChange} placeholder="eg.  Intermediate" required />
-                                </div>
+                                <SkillsForm data={data} onChange={onChange}/>
 
                                 <button type="button" className="btn btn-dark me-2" onClick={() => {
                                     navigate('/resume/experience')

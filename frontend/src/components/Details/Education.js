@@ -11,7 +11,10 @@ const Education = () => {
                 <>
                     <div className="card mb-3 mx-5">
                         <div className="card-body">
-                            <h3 className="card-title">Education           <EducationUpdate info={resume.education[0]}/></h3>
+                            <div className='d-flex align-items-center'>
+                                <h3 className="card-title mx-2">Education</h3>
+                                <EducationUpdate info={resume.education[0]} />
+                            </div>
                             {
                                 resume.education.map((item) => {
                                     return (
@@ -23,11 +26,11 @@ const Education = () => {
                                             <p className="my-2 blockquote">Degree : {item.degree}</p>
                                             <p className="my-2 blockquote">College Name : {item.collegename}</p>
 
-                                      </div>
+                                        </div>
                                     )
                                 })
                             }
-                  
+
                         </div>
                     </div>
                 </>

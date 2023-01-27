@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch} from 'react-redux'
 import { ExperienceAction, GetResumeAction } from '../../redux/actions/ResumeActions'
 import { AiOutlineEdit } from 'react-icons/ai'
+import ExperienceForm from '../CommonForms/ExperienceForm'
 const ExperienceUpdate = (props) => {
     const info = props.info
     const modal = props.modal
@@ -44,33 +45,14 @@ const ExperienceUpdate = (props) => {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Update Experience</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
 
                             <form onSubmit={onSubmit}>
-                                <h2 className='text-center my-2'>Experinece ( OPTIONAL ) </h2>
-                                <div className="mb-3">
-                                    <label htmlFor="field" className="form-label">Working in</label>
-                                    <input type="text" value={data.field} name='field' className="form-control" id="field" onChange={onChange} placeholder="eg. IT Company(name of company)" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="years" className="form-label">Years of Working</label>
-                                    <input type="text" value={data.years} name='years' className="form-control" id="years" onChange={onChange} placeholder="eg. 5" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="role" className="form-label">Job Type(role)</label>
-                                    <input type="text" value={data.role} name='role' className="form-control" id="role" onChange={onChange} placeholder="eg. Data Analyst" required />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="description" className="form-label">Detail</label>
-                                    <input type="text" value={data.description} name='description' className="form-control" id="description" aria-describedby="description" onChange={onChange} placeholder="eg.  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore non sequi sint?" />
-                                </div>
-                                <div class="modal-footer">
-                                    <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-dark">Save changes</button>
-                                </div>
+                                <h2 className='text-center my-2'>Experince</h2>
+                                <ExperienceForm data={data} onChange={onChange}/>
                             </form>
                         </div>
 
