@@ -52,7 +52,7 @@ exports.LoginUser = CatchAsyncError(async (req, res, next) => {
     const { username, password } = req.body
 
     // Verifying whether user exists with the entered Username
-    let user = await Users.findOne({ username })
+    let user = await Users.findOne({ username:username })
     if (!user) {
         return (next(errorHandler("Username or Email or Password  doesn't exists", 403)))
     }
@@ -126,6 +126,7 @@ exports.GetUserDetailsAdmin = CatchAsyncError(
 
 // Verify User -- GET 
 exports.VerifyUserAuth = async (req, res, next) => {
+    console.log(1);
     const user = await Users.findById(req.user).select('-password');
 
     if (!user) {
