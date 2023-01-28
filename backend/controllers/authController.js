@@ -17,6 +17,7 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     let user = await Users.findOne({ username:username})
     console.log(2);
     if (user) {
+        console.log('error');
         return (next(errorHandler("Username or Email or Password already exists", 403)))
     }
     console.log(34);
