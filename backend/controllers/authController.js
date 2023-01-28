@@ -19,7 +19,7 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     if (user) {
         return (next(errorHandler("Username or Email or Password already exists", 403)))
     }
-
+    console.log(34);
     //Storing image to the cloudinary
     const output = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: 'a'
@@ -27,6 +27,8 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     console.log(3);
     // Hashing the password
     const HashedPassword = await bcrypt.hash(password, 10)
+    console.log(4);
+
     //Storing the data
     user = await Users.create({
         username, password: HashedPassword, email, role: 'user', avatar: {
@@ -34,9 +36,11 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
             public_id: output.public_id
         }
     })
+    console.log(5);
 
     //creasting token
     const token = await jwt.sign({ userID: user.id }, process.env.JWT_SECRETE)
+    console.log(6);
 
 
     // sending response to the user and storing token into the cookies
