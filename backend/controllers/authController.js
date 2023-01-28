@@ -14,7 +14,8 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     const { username, password, email } = req.body
 
     // Verifying whether user exists with the entered Username
-    let user = await Users.findOne({ username:username})
+    let user = await Users.findOne({ username})
+console.log(req.body.avatar);
     console.log(2);
     if (user) {
         console.log('error');

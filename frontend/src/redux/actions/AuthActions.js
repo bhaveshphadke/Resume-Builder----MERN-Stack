@@ -48,7 +48,7 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
         dispatch({
             type: SIGNUP_USER
         })
-
+console.log(avatar);
         const userData = {
             username: credentials.username,
             password: credentials.password,
