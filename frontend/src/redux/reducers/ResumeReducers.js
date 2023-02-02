@@ -180,7 +180,8 @@ export const GetResumeReducer = (state={},action)=>{
                 success:true,
                 loading:false,
                 dataLoaded:true,
-                resume:action.payload.resume
+                resume:action.payload.resume,
+                avatar:action.payload.avatar
             }
     
         case GETRESUME_FAIL:

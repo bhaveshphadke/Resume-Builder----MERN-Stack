@@ -22,7 +22,7 @@ export const BuldResumeAction =(html)=>async(dispatch)=>{
       
         const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/build/template1`, url, config)
 
-        console.log(data);
+        // console.log(data);
         dispatch({
             type:BUILD_RESUME_SUCCESS,
             payload:data

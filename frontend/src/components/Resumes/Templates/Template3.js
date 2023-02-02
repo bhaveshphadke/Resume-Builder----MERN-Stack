@@ -1,9 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import './template1.css'
-const Template1 = () => {
 
-    const { resume } = useSelector((state) => state.GetResumeReducer)
+const Template3 = () => {
+ 
+    const { resume, avatar } = useSelector((state) => state.GetResumeReducer)
+    const [ProfilePicture, setProfilePicture] = useState("")
+    useEffect(() => {
+        if (avatar) {
+            const reader = new FileReader()
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setProfilePicture(reader.result);
+                }
+            }
+            fetch(avatar).then((res) => {
+                return res.blob()
+            }).then((blob) => {
+                reader.readAsDataURL(blob);
+            })
+        }
+    }, [resume, ProfilePicture])
     return (
         <>
             {
@@ -20,6 +37,12 @@ const Template1 = () => {
                                     alignItems: 'center',
                                     flexWrap: 'wrap'
                                 }}>
+                                    <img src={ProfilePicture} alt="" style={{
+                                        width:'80px',
+                                        borderRadius:'50%',
+                                        border:'1px solid black',
+                                        marginRight:'10px'
+                                    }}/>
 
                                     <div className="name" id="name" style={{
                                         marginRight: '10px',
@@ -180,4 +203,4 @@ const Template1 = () => {
     )
 }
 
-export default Template1
+export default Template3

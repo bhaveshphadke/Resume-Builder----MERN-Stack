@@ -9,27 +9,20 @@ const cloudinary = require('cloudinary')
 // All Controllers
 //Signup a User
 exports.SignupUser = CatchAsyncError(async (req, res, next) => {
-    console.log(1);
     // Taking All data from erquest 
     const { username, password, email } = req.body
 
     // Verifying whether user exists with the entered Username
     let user = await Users.findOne({ username})
-console.log(req.body.avatar);
-    console.log(2);
     if (user) {
-        console.log('error');
         return (next(errorHandler("Username or Email or Password already exists", 403)))
     }
-    console.log(34);
     //Storing image to the cloudinary
     const output = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: 'a'
     })
-    console.log(3);
     // Hashing the password
     const HashedPassword = await bcrypt.hash(password, 10)
-    console.log(4);
 
     //Storing the data
     user = await Users.create({
@@ -38,11 +31,9 @@ console.log(req.body.avatar);
             public_id: output.public_id
         }
     })
-    console.log(5);
 
     //creasting token
     const token = await jwt.sign({ userID: user.id }, process.env.JWT_SECRETE)
-    console.log(6);
 
 
     // sending response to the user and storing token into the cookies
@@ -58,7 +49,7 @@ exports.LoginUser = CatchAsyncError(async (req, res, next) => {
     const { username, password } = req.body
 
     // Verifying whether user exists with the entered Username
-    let user = await Users.findOne({ username:username })
+    let user = await Users.findOne({ username })
     if (!user) {
         return (next(errorHandler("Username or Email or Password  doesn't exists", 403)))
     }

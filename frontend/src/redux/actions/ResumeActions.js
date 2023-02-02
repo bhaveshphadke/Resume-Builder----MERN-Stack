@@ -171,6 +171,7 @@ export const GetResumeAction = () => async (dispatch) => {
         }
 
         const {data} = await axios.get(`${process.env.REACT_APP_API_HOST}/resume/getresume`,config)
+        console.log(data);
         dispatch({
             type:GETRESUME_SUCCESS,
             payload:data

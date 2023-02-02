@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom'
 import Template1 from './Templates/Template1'
 import Buttons from './Buttons'
 import Template2 from './Templates/Template2'
+import Template3 from './Templates/Template3'
+import Template4 from './Templates/Template4'
 const Template = (props) => {
     console.log(props);
     const { resume } = useSelector((state) => state.GetResumeReducer)
@@ -24,6 +26,12 @@ const Template = (props) => {
         }
         else if (number === '2') {
             setTemplate(<Template2 />)
+        }
+        else if (number === '3') {
+            setTemplate(<Template3 />)
+        }
+        else if (number === '4') {
+            setTemplate(<Template4 />)
         }
         else {
             setTemplate(<Template1 />)

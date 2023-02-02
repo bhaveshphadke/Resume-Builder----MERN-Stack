@@ -239,9 +239,12 @@ exports.GetResumeData = CatchAsyncError(
         if (!resume) {
             return next(errorHandler("Create Resume First", 404))
         }
+        
+        const user = await Users.findById(req.user)
         res.status(200).json({
             success: true,
-            resume
+            resume,
+            avatar : user.avatar[0].secure_url
         })
     }
 )
