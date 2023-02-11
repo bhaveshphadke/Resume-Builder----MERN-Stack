@@ -4,6 +4,7 @@ import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetResumeAction, SkillsAction } from '../../redux/actions/ResumeActions';
 import SkillsForm from '../CommonForms/SkillsForm';
+import { toast } from 'react-toastify';
 const Skills = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.SkillsReducer)
@@ -20,6 +21,14 @@ const Skills = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.skill.length<1){
+            toast("Skill should be at least 1 chatracter")
+            return
+        }
+        if(data.description.length < 5){
+            toast("Description name should be at least 5 chatracter")
+            return
+        }
         await dispatch(SkillsAction(data))
         
     }

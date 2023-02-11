@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { EducationAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 import EducationForm from '../CommonForms/EducationForm';
 import Loader from '../layout/Loader'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Education = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.EducationReducer)
@@ -22,6 +25,30 @@ const Education = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.schoolname.length<5){
+            toast("School length should be at least 5 chatracter")
+            return
+        }
+        if(data.juniorcollege.length<5){
+            toast("Junior College length should be at least 5 chatracter")
+            return
+        }
+        if(data.collegename.length<5){
+            toast("College length should be at least 5 chatracter")
+            return
+        }
+        if(data.cgpa === ""){
+            toast("School length should be at least greater than 1")
+            return
+        }
+        if(data.yearofcompletion === ""){
+            toast("yearofcompletion cannot be empty")
+            return
+        }
+        if(data.degree.length<4){
+            toast("degree length should be at least 3 chatracter")
+            return
+        }
         await dispatch(EducationAction(data))
         await dispatch(GetResumeAction())
 

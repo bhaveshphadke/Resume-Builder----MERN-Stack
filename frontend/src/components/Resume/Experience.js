@@ -4,6 +4,7 @@ import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { ExperienceAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 import ExperienceForm from '../CommonForms/ExperienceForm';
+import { toast } from 'react-toastify';
 const Experience = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.ExperienceReducer)
@@ -21,6 +22,22 @@ const Experience = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.field.length<4){
+            toast("Company name should be at least 4 chatracter")
+            return
+        }
+        if(data.years === ""){
+            toast("Years cannot be empty")
+            return
+        }
+        if(data.role.length<5){
+            toast("Role should be atleast 5 characters")
+            return
+        }
+        if(data.description.length < 8){
+            toast("description should be at least greater than 8")
+            return
+        }
         await dispatch(ExperienceAction(data))
         
     }

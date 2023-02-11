@@ -18,11 +18,11 @@ const EducationForm = (props) => {
             </div>
             <div className="mb-3">
                 <label htmlFor="phone" className="form-label">CGPA</label>
-                <input type="text" value={data.cgpa} name='cgpa' className="form-control" id="cgpa" onChange={onChange} placeholder="eg. 10.00" required />
+                <input type="number" value={data.cgpa} name='cgpa' className="form-control" id="cgpa" onChange={onChange} placeholder="eg. 10.00" required />
             </div>
             <div className="mb-3">
                 <label htmlFor="location" className="form-label">Year Of Completion</label>
-                <input type="text" value={data.yearofcompletion} name='yearofcompletion' className="form-control" id="yearofcompletion" onChange={onChange} placeholder="eg. 2022 or expected(2023)" required />
+                <input type="number" value={data.yearofcompletion} name='yearofcompletion' className="form-control" id="yearofcompletion" onChange={onChange} placeholder="eg. 2022 or expected(2023)" required />
             </div>
             <div className="mb-3">
                 <label htmlFor="degree" className="form-label">Degree</label>

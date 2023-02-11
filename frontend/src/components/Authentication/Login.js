@@ -4,6 +4,8 @@ import { LoginUser, VerifyUser } from '../../redux/actions/AuthActions'
 import Loader from '../layout/Loader'
 import { useNavigate } from 'react-router-dom'
 import Alert from '../layout/Alert'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,6 +23,7 @@ const Login = () => {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
+        toast("Wow so easy!");
         await dispatch(LoginUser(credentials))
         await dispatch(VerifyUser())
         console.log(loggedin);

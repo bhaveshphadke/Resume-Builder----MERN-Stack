@@ -4,6 +4,7 @@ import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetResumeAction, ProjectsAction } from '../../redux/actions/ResumeActions';
 import ProjectForm from '../CommonForms/ProjectForm';
+import { toast } from 'react-toastify';
 const Projects = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.ProjectReducer)
@@ -20,6 +21,14 @@ const Projects = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.projectname.length<3){
+            toast("Project name should be at least 3 chatracter")
+            return
+        }
+        if(data.description.length < 15){
+            toast("Description should be at least 15 chatracter")
+            return
+        }
         await dispatch(ProjectsAction(data))
         setSkiippable(true)
     }

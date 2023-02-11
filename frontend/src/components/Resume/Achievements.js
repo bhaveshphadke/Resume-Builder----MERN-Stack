@@ -4,6 +4,7 @@ import Loader from '../layout/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { AchievementAction, GetResumeAction } from '../../redux/actions/ResumeActions';
 import AchievementForm from '../CommonForms/AchievementForm';
+import { toast } from 'react-toastify';
 const Achievements = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.AchievementsReducer)
@@ -20,6 +21,10 @@ const Achievements = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.achievement.length<15){
+            toast("Project name should be at least 15 chatracter")
+           return
+        }
         await dispatch(AchievementAction(data))
         setSkiippable(true)
     }

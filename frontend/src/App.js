@@ -17,6 +17,7 @@ import Profile from './components/Profile/Profile';
 import Template from './components/Resumes/Template';
 import Templates from './components/Resumes/Templates';
 import Error404 from './components/layout/Error404';
+import { ToastContainer } from 'react-toastify';
 // import TempTemplate1 from './components/Resumes/Template1';
 
 
@@ -35,6 +36,7 @@ function App() {
     <>
 
       <Router>
+      <ToastContainer/>
         {window.location.pathname === '/temp' ? "" : <Navbar />}
         <Routes>
 

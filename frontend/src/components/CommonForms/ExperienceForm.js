@@ -5,12 +5,12 @@ const ExperienceForm = (props) => {
   return (
   <>
   <div className="mb-3">
-                                    <label htmlFor="field" className="form-label">Working in</label>
+                                    <label htmlFor="field" className="form-label">Working at/ex-company</label>
                                     <input type="text" value={data.field} name='field' className="form-control" id="field" onChange={onChange} placeholder="eg. IT Company(name of company)" required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="years" className="form-label">Years of Working</label>
-                                    <input type="text" value={data.years} name='years' className="form-control" id="years" onChange={onChange} placeholder="eg. 5" required />
+                                    <input type="number" value={data.years} name='years' className="form-control" id="years" onChange={onChange} placeholder="eg. 5" required />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="role" className="form-label">Job Type(role)</label>

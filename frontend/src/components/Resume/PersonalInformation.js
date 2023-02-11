@@ -4,6 +4,7 @@ import { GetResumeAction, PersonalInformationAction } from '../../redux/actions/
 import { useNavigate } from 'react-router-dom'
 import Loader from '../layout/Loader'
 import PersonalInfoForm from '../CommonForms/PersonalInfoForm'
+import { toast } from 'react-toastify'
 const PersonalInformation = () => {
     const navigate = useNavigate()
     const { loading, dataLoaded } = useSelector(state => state.PersonalInformationReducer)
@@ -22,6 +23,31 @@ const PersonalInformation = () => {
     const dispatch = useDispatch()
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(data.name.length<3){
+            toast("Name should be at least 3 chatracter")
+            return
+        }
+        if(data.role.length < 3){
+            toast("Role should be at least 3 chatracter")
+            return
+        }if(data.email.length<3){
+            toast("Email should be at least 10 chatracter")
+            return
+        }
+        if(data.phone.length !== 10){
+            toast("Phone must be 10 characters")
+            return
+        }if(data.location.length<5){
+            toast("Location should be at least 5 chatracter")
+            return
+        }
+        if(data.about.length < 15){
+            toast("About should be at least 15 chatracter")
+            return
+        }if(data.careerobjective.length<3){
+            toast("Career Objective should be at least 3 chatracter")
+            return
+        }
         await dispatch(PersonalInformationAction(data))
         await dispatch(GetResumeAction())
     }
