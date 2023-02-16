@@ -28,12 +28,12 @@ const Templates = () => {
               }}/></Link>
             </div>
             <div className="each-template">
-              <Link className='nav-link' to="/template/2"><img src={template3} alt="" style={{
+              <Link className='nav-link' to="/template/3"><img src={template3} alt="" style={{
                 width:'250px'
               }}/></Link>
             </div>
             <div className="each-template">
-              <Link className='nav-link' to="/template/2"><img src={template4} alt="" style={{
+              <Link className='nav-link' to="/template/4"><img src={template4} alt="" style={{
                 width:'250px'
               }}/></Link>
             </div>

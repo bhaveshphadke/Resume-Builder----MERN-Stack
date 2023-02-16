@@ -18,6 +18,10 @@ import Template from './components/Resumes/Template';
 import Templates from './components/Resumes/Templates';
 import Error404 from './components/layout/Error404';
 import { ToastContainer } from 'react-toastify';
+import AddExperience from './components/AddData/AddExperience';
+import AddProjects from './components/AddData/AddProjects';
+import AddSkills from './components/AddData/AddSkills';
+import AddAchievements from './components/AddData/AddAchievments';
 // import TempTemplate1 from './components/Resumes/Template1';
 
 
@@ -48,14 +52,21 @@ function App() {
             <>
               <Route exact path='/resume/personalinformation' element={<PersonalInformation />}></Route>
               {resume && <Route exact path='/resume/education' element={<Education />}></Route>}
-              <Route exact path='/me' element={<Profile />}></Route>
               {resume && resume.education.length > 0 && <Route exact path='/resume/experience' element={<Experience />}></Route>}
               {resume && resume.education.length > 0 && <Route exact path='/resume/projects' element={<Projects />}></Route>}
               {resume && resume.projects.length > 0 && <Route exact path='/resume/skills' element={<Skills />}></Route>}
               {resume && resume.skills.length > 0 && <Route exact path='/resume/achievements' element={<Achievements />}></Route>}
+              
+              
+              {resume && resume.education.length > 0 && <Route exact path='/update/resume/experience' element={<AddExperience />}></Route>}
+              {resume && resume.education.length > 0 && <Route exact path='/update/resume/projects' element={<AddProjects />}></Route>}
+              {resume && resume.projects.length > 0 && <Route exact path='/update/resume/skills' element={<AddSkills />}></Route>}
+              {resume && resume.skills.length > 0 && <Route exact path='/update/resume/achievements' element={<AddAchievements />}></Route>}
+
               {resume && <Route exact path='/resume/templates' element={<Templates />}></Route>}
               {resume && resume.achievements.length > 0 && <Route exact path='/template/:number' element={<Template />}></Route>}
-              {/* {resume && <Route exact path='/resume/update/personalInfo' element={<PersonalInfo />}></Route>} */}
+              
+              <Route exact path='/me' element={<Profile />}></Route>
             </>
           }
 

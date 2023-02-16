@@ -1,0 +1,65 @@
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import Loader from '../layout/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { AchievementAction, GetResumeAction } from '../../redux/actions/ResumeActions';
+import AchievementForm from '../CommonForms/AchievementForm';
+import { toast } from 'react-toastify';
+const AddAchievements = () => {
+    const navigate = useNavigate()
+    const { loading, dataLoaded } = useSelector(state => state.AchievementsReducer)
+    const { resume } = useSelector(state => state.GetResumeReducer)
+
+
+    const [data, setData] = useState(
+        {
+            achievement: ""
+        }
+    )
+    const [headAfterAdd, setHeadAfterAdd] = useState("")
+    const [skiippable, setSkiippable] = useState(false)
+    const dispatch = useDispatch()
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        if(data.achievement.length<15){
+            toast("Project name should be at least 15 chatracter")
+           return
+        }
+        await dispatch(AchievementAction(data))
+        setSkiippable(true)
+    }
+    const onChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value })
+    }
+    useEffect(() => {
+        if (dataLoaded) {
+            setData({
+                achievement: ""
+            })
+            setHeadAfterAdd("Send Another Response")
+            setSkiippable(true)
+        }
+
+    }, [dataLoaded])
+    return (
+        <>
+            {
+                loading ? <Loader /> :
+                    <>
+                        <div className="container my-5">
+                            <form onSubmit={onSubmit}>
+                                <h2 className='text-center my-2'>Achievement </h2>
+                                <h3 className='text-center my-2'>{headAfterAdd} </h3>
+                               <AchievementForm data={data} onChange={onChange}/>
+
+                              
+                                <button type="submit" className="btn btn-dark me-2">Save</button>
+                            </form>
+                        </div>
+                    </>
+            }
+        </>
+    )
+}
+
+export default AddAchievements

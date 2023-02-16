@@ -23,10 +23,8 @@ const Login = () => {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-        toast("Wow so easy!");
         await dispatch(LoginUser(credentials))
         await dispatch(VerifyUser())
-        console.log(loggedin);
 
     }
     useEffect(() => {
@@ -35,9 +33,6 @@ const Login = () => {
         } else if (loggedin === true) {
             navigate('/')
         }
-        console.log(1);
-        console.log(process.env.REACT_APP_API_HOST);
-        console.log(process.env.REACT_APP_API_HOST);
     }, [loggedin, navigate])
 
     return (

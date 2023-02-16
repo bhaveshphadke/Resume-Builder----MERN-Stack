@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import SkillsUpdate from '../Update/SkillsUpdate'
 
 const Skills = () => {
     const { resume } = useSelector(state => state.GetResumeReducer)
+    const navigate = useNavigate()
     return (
         <>
             {
@@ -28,6 +30,9 @@ const Skills = () => {
                                         })
                                     }
                                 </ul>
+                                <button className="btn btn-dark" onClick={()=>{
+                                    navigate('/update/resume/skills')
+                                }}>Add</button>
                             </div>
                         </div>
                     }

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import PersonalUpdate from '../Update/PersonalUpdate'
-
+import { useNavigate } from 'react-router-dom'
 const Personal = () => {
+    const navigate = useNavigate()
     const { resume } = useSelector(state => state.GetResumeReducer)
     return (
         <>
@@ -31,6 +32,7 @@ const Personal = () => {
                                     )
                                 })
                             }
+                         
                         </div>
                     </div>
                 </>

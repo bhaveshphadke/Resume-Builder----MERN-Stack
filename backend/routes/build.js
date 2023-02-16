@@ -11,9 +11,6 @@ const router = express.Router()
 
 // All Routes
 router.post('/template1',VerifyUser,Template1)
-router.get('/template1',(req,res)=>{
-    res.send('Helo World')
-})
 
 
 module.exports = router
