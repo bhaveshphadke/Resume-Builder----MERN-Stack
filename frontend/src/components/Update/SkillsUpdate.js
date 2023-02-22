@@ -41,21 +41,21 @@ const SkillsUpdate = (props) => {
             <AiOutlineEdit data-bs-toggle="modal" data-bs-target={`#skill${modal}`}/>
 
 
-            <div class="modal fade" id={`skill${modal}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update Skills</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id={`skill${modal}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Update Skills</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                         <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Skills </h2>
                                 <SkillsForm data={data} onChange={onChange}/>
 
-                                <div class="modal-footer">
-                            <button ref={ref} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-dark">Update</button>
+                                <div className="modal-footer">
+                            <button ref={ref} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-dark">Update</button>
                         </div>
                             </form>
                         </div>

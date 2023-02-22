@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, SIGNOUT, SIGNUP_USER, SIGNUP_USER_FAIL, SIGNUP_USER_SUCCESS, VERIFY_USER, VERIFY_USER_FAIL, VERIFY_USER_SUCCESS } from "../constnants/AuthConstatnts"
+import { CHANGE_PROFILE_PICTURE, CHANGE_PROFILE_PICTURE_FAIL, CHANGE_PROFILE_PICTURE_SUCCESS, LOGIN_USER, LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, SIGNOUT, SIGNUP_USER, SIGNUP_USER_FAIL, SIGNUP_USER_SUCCESS, VERIFY_USER, VERIFY_USER_FAIL, VERIFY_USER_SUCCESS } from "../constnants/AuthConstatnts"
 import axios from 'axios'
 export const VerifyUser = () => async (dispatch) => {
     try {
@@ -9,6 +9,9 @@ export const VerifyUser = () => async (dispatch) => {
             withCredentials: true
         }
         const { data } = await axios.get(`${process.env.REACT_APP_API_HOST}/auth/verifyuser`, config)
+        console.log('data');
+        console.log(data);
+        console.log('data');
 
         dispatch({
             type: VERIFY_USER_SUCCESS,
@@ -67,6 +70,32 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: SIGNUP_USER_FAIL
+        })
+    }
+}
+
+
+export const ChangeProfilePicture = ( avatar) => async (dispatch) => {
+    try {
+        dispatch({
+            type: CHANGE_PROFILE_PICTURE
+        })
+        const userData = {
+            avatar
+        }
+        // console.log(avatar);
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+        }
+        const { data } = await axios.put(`${process.env.REACT_APP_API_HOST}/auth/changeprofilepicture`, userData, config)
+        dispatch({
+            type: CHANGE_PROFILE_PICTURE_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: CHANGE_PROFILE_PICTURE_FAIL
         })
     }
 }

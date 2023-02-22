@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ExperienceUpdate from '../Update/ExperienceUpdate'
 
 const Experience = () => {
@@ -17,7 +17,9 @@ const Experience = () => {
                         <div className="card mb-3 mx-5">
                             <div className="card-body">
                                 <h3 className="card-title">Experience</h3>
-                                <ul>
+                                {
+                                    resume.experience.length>0 ?
+                                    <ul>
 
                                     {
                                         resume.experience.map((item) => {
@@ -33,11 +35,14 @@ const Experience = () => {
                                         })
                                     }
                                 </ul>
+                                :<div className='my-3'>No Experience</div>
+                                }
                             <button className='btn btn-dark' onClick={() => {
                                 navigate('/update/resume/experience')
                             }}>Add</button>
                             </div>
                         </div>
+
                     }
                 </>
             }

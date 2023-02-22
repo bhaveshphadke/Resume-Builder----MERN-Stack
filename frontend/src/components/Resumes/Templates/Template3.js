@@ -22,7 +22,7 @@ const Template3 = () => {
         }
     }, [resume, ProfilePicture])
     return (
-        <>
+        <div className='main-container'>
             {
                 resume &&
 
@@ -38,6 +38,7 @@ const Template3 = () => {
                                     flexWrap: 'wrap'
                                 }}>
                                     <img src={ProfilePicture} alt="" style={{
+                                        height:'80px',
                                         width:'80px',
                                         borderRadius:'50%',
                                         border:'1px solid black',
@@ -199,7 +200,7 @@ const Template3 = () => {
                     <hr />
                 </>
             }
-        </>
+        </div>
     )
 }
 

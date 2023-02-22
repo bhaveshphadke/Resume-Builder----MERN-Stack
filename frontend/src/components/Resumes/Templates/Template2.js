@@ -4,7 +4,7 @@ const Template2 = () => {
   
     const { resume } = useSelector((state) => state.GetResumeReducer)
     return (
-        <>
+        <div className='main-container'>
         {
             resume &&
 
@@ -144,6 +144,41 @@ const Template2 = () => {
                                     <hr />
 
                                 </div>
+                               {
+                                resume && resume.experience.length>0 &&
+                                <div className="experience">
+                                <h2 style={{
+                                    fontSize: '2.5vmax'
+                                }}>Experience</h2>
+                                {
+                                    resume && resume.experience && resume.experience.map((item) => {
+                                        return (
+                                            <div key={item._id} style={{
+                                                paddingRight: '10px'
+                                            }}>
+                                                <h3 className="experience-name" style={{
+                                                    fontWeight: '500',
+                                                    margin: '0',
+                                                    fontSize: '1.6vmax'
+                                                }}>{item.role} ({item.years} years)</h3>
+                                                <p style={{
+                                                    margin: '0',
+                                                    fontSize: '1.6vmax'
+                                                }}>Working at : {item.field}</p>
+                                                <p style={{
+                                                    margin: 0,
+                                                    marginBottom: '10px',
+                                                    fontSize: '1.6vmax'
+                                                }}>{item.description}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
+
+                                <hr />
+
+                            </div>
+                               }
                                 <div className="achievements">
                                     <h2 style={{
                                         fontSize: '2.5vmax'
@@ -167,7 +202,7 @@ const Template2 = () => {
                 <hr />
             </>
         }
-    </>
+    </div>
     )
 }
 

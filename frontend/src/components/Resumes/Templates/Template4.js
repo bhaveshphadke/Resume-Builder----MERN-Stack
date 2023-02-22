@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 const Template4 = () => {
     const { resume, avatar } = useSelector((state) => state.GetResumeReducer)
     const [ProfilePicture, setProfilePicture] = useState("")
@@ -19,47 +19,48 @@ const Template4 = () => {
         }
     }, [resume, ProfilePicture])
     return (
-        <>
-        {
-            resume &&
+        <div className='main-container'>
+            {
+                resume &&
 
 
-            <>
-                <div className="container" id='container'>
-                    {
-                        resume.personalInfo &&
-                        <div className="header">
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                flexWrap:'wrap'
-                            }}>
-                                 <img src={ProfilePicture} alt="" style={{
-                                        width:'80px',
-                                        borderRadius:'50%',
-                                        border:'1px solid black',
-                                        marginRight:'10px'
-                                    }}/>
+                <>
+                    <div className="container" id='container'>
+                        {
+                            resume.personalInfo &&
+                            <div className="header">
+                                <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap'
+                                }}>
+                                    <img src={ProfilePicture} alt="" style={{
+                                        width: '80px',
+                                        height: '80px',
+                                        borderRadius: '50%',
+                                        border: '1px solid black',
+                                        marginRight: '10px'
+                                    }} />
 
-                                <div className="name" id="name" style={{
-                                    marginRight: '10px',
-                                    fontSize: '3.5vmax'
-                                }}>{resume.personalInfo[0].name}</div>
-                                <div className="phone" style={{
-                                    marginRight: '10px',
+                                    <div className="name" id="name" style={{
+                                        marginRight: '10px',
+                                        fontSize: '3.5vmax'
+                                    }}>{resume.personalInfo[0].name}</div>
+                                    <div className="phone" style={{
+                                        marginRight: '10px',
+                                        fontSize: '1.6vmax'
+                                    }}> +91{resume.personalInfo[0].phone} </div>
+                                    <div className="email" style={{
+                                        marginRight: '10px',
+                                        fontSize: '1.6vmax'
+                                    }}> {resume.personalInfo[0].email} </div>
+                                </div>
+                                <div className="about" style={{
                                     fontSize: '1.6vmax'
-                                }}> +91{resume.personalInfo[0].phone} </div>
-                                <div className="email" style={{
-                                    marginRight: '10px',
-                                    fontSize: '1.6vmax'
-                                }}> {resume.personalInfo[0].email} </div>
+                                }}>{resume.personalInfo[0].about}</div>
                             </div>
-                            <div className="about" style={{
-                                fontSize: '1.6vmax'
-                            }}>{resume.personalInfo[0].about}</div>
-                        </div>
-                    }
-                  <hr />
+                        }
+                        <hr />
                         <div className="data-container" style={{
                             display: 'flex'
                         }}>
@@ -137,7 +138,7 @@ const Template4 = () => {
 
 
                                 <div className="personal-details"></div>
-                                
+
                                 <div className="projects">
                                     <h2 style={{
                                         fontSize: '2.5vmax'
@@ -166,6 +167,41 @@ const Template4 = () => {
                                     <hr />
 
                                 </div>
+                                {
+                                    resume && resume.experience.length > 0 &&
+                                    <div className="experience">
+                                        <h2 style={{
+                                            fontSize: '2.5vmax'
+                                        }}>Experience</h2>
+                                        {
+                                            resume && resume.experience && resume.experience.map((item) => {
+                                                return (
+                                                    <div key={item._id} style={{
+                                                        paddingRight: '10px'
+                                                    }}>
+                                                        <h3 className="experience-name" style={{
+                                                            fontWeight: '500',
+                                                            margin: '0',
+                                                            fontSize: '1.6vmax'
+                                                        }}>{item.role} ({item.years} years)</h3>
+                                                        <p style={{
+                                                            margin: '0',
+                                                            fontSize: '1.6vmax'
+                                                        }}>Working at : {item.field}</p>
+                                                        <p style={{
+                                                            margin: 0,
+                                                            marginBottom: '10px',
+                                                            fontSize: '1.6vmax'
+                                                        }}>{item.description}</p>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+
+                                        <hr />
+
+                                    </div>
+                                }
                                 <div className="achievements">
                                     <h2 style={{
                                         fontSize: '2.5vmax'
@@ -184,12 +220,12 @@ const Template4 = () => {
                                 <hr />
 
                             </div>
+                        </div>
                     </div>
-                </div>
-                <hr />
-            </>
-        }
-    </>
+                    <hr />
+                </>
+            }
+        </div>
     )
 }
 

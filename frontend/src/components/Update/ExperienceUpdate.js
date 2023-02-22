@@ -41,14 +41,14 @@ const ExperienceUpdate = (props) => {
         <>
             <AiOutlineEdit data-bs-toggle="modal" data-bs-target={`#ExperienceModal${modal}`} />
 
-            <div class="modal fade" id={`ExperienceModal${modal}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update Experience</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id={`ExperienceModal${modal}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Update Experience</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
 
                             <form onSubmit={onSubmit}>
                                 <h2 className='text-center my-2'>Experince</h2>

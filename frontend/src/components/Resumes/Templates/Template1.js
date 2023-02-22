@@ -5,7 +5,7 @@ const Template1 = () => {
 
     const { resume } = useSelector((state) => state.GetResumeReducer)
     return (
-        <>
+        <div className='main-container'>
             {
                 resume &&
 
@@ -176,7 +176,7 @@ const Template1 = () => {
                     <hr />
                 </>
             }
-        </>
+        </div>
     )
 }
 

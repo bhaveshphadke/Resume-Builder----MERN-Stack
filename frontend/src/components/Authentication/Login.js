@@ -10,6 +10,8 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { loading, loggedin, message } = useSelector(state => state.LoginReducer)
+    const verifyuser = useSelector(state=>state.VerifyUserReducer)
+
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -28,12 +30,12 @@ const Login = () => {
 
     }
     useEffect(() => {
-        if (loggedin === false) {
+        if (!verifyuser.success) {
             navigate('/signin')
-        } else if (loggedin === true) {
+        } else if (verifyuser.success) {
             navigate('/')
         }
-    }, [loggedin, navigate])
+    }, [verifyuser, navigate])
 
     return (
         <>

@@ -136,6 +136,30 @@ exports.VerifyUserAuth = async (req, res, next) => {
 }
 
 
+// Change Profile Picture
+exports.ChangeProfilePicture = CatchAsyncError(async(req,res,next)=>{
+    const id = req.user.id
+
+    let user = await Users.findById(id).select('-password')
+
+    if(!user){
+        return next(new errorHandler('Not Authorised',403))
+    }
+    
+    const output = await cloudinary.v2.uploader.upload(req.body.avatar,{
+        folder:'a'
+    })
+
+    user.avatar[0].public_id = output.public_id
+    user.avatar[0].secure_url = output.secure_url
+    user.save();
+
+    res.status(200).json({
+        message:'Changed successfully!!',
+        success:'true'
+    })
+})
+
 // Forget Password
 
 // Chnage Forgotten password

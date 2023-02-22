@@ -1,4 +1,13 @@
+.main-container{
+  border: 1px solid black;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 100px;
+}
 @media screen and (max-width: 800px) {
+  .main-container{
+    width: 80%;
+  }
   .name {
     font-size: 1.6rem !important;
   }
@@ -50,6 +59,18 @@
   .projects {
     padding: 0 2px 10px 10px !important;
   }
+  .experience > h2 {
+    font-size: 1rem !important;
+  }
+  .experience li {
+    font-size: 0.7rem !important;
+  }
+  .experience p {
+    font-size: 0.7rem !important;
+  }
+  .experience {
+    padding: 0 2px 10px 10px !important;
+  }
 
   .right {
     padding: 0 2px 10px 10px !important;
@@ -98,5 +119,11 @@
 
   .right {
     padding: 0 2px 10px 10px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .main-container{
+    width: 95%;
   }
 }
