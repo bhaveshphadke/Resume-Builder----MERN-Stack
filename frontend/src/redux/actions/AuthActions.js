@@ -58,6 +58,7 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
             avatar
         }
         console.log(avatar);
+        console.log(`${process.env.REACT_APP_API_HOST}/auth/signup`);
         const config = {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true

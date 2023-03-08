@@ -1,0 +1,32 @@
+Name: Bhavesh Phadke
+Email: bhaveshphadke7050@gmail.com
+Role: Student
+Phone: +91 9252569289
+Location : Navi Mumbai, Panvel 410206
+About: I have a good knowledge at MERN stackwant to grow my knowledge with grabbing experience.
+Career Objective: Looking forward to grab an opportunity in a reputable oraganization to utilize my technical skills and contribute in the growth of the organization. Also to enhace my experience in the IT sector. 
+
+
+School Name: Vihighar High School, Panvel
+Junior College: Changu Kana Thakur Junior College
+College Name: Changu Kana Thakur College of Arts, Commerce and Science.
+CGPA: 9.49.
+Year of completion: 2023.
+Degree: Computer Science.
+
+Project: 
+Image Extension Converter
+Used NodeJS, ExpressJS, MongoDB, Handlebars.
+Added multiple image format which were supporting this web application.
+
+Resume Builder
+Used ReactJS, NodeJS, ExpressJS, MongoDB (MERN Stack).
+Created multiple templates to the user to select.
+
+
+Skills:
+Javascript - Intermediate
+
+Achievements
+Re-organized something to make it work better.
+Identified a problem and solved it.

@@ -9,7 +9,7 @@ const Signup = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { loading, signup, message } = useSelector(state => state.SignupUserReducer)
-    const verifyuser = useSelector(state=>state.VerifyUserReducer)
+    const verifyuser = useSelector(state => state.VerifyUserReducer)
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
@@ -35,7 +35,7 @@ const Signup = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-       await dispatch(SignupUser(credentials, avatar))
+        await dispatch(SignupUser(credentials, avatar))
         await dispatch(VerifyUser())
 
     }
