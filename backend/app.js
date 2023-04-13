@@ -19,6 +19,7 @@ connectToMongo()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use('/',express.static(path.join('build')));
 app.use(cors({
     origin: "http://localhost:3000",
     credentials: true
@@ -44,7 +45,6 @@ const buildRouter = require(path.join(__dirname, 'routes/build'))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/resume', resumeRouter)
 app.use('/api/v1/build', buildRouter)
-app.use('/',express.static(path.join('static')))
 
 
 
@@ -52,8 +52,9 @@ app.use('/',express.static(path.join('static')))
 // Post Middleware
 app.use(error)
 
-app.get('/',(req,res)=>{
-    res.send('s')
+app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'build','index.html'))
+    // console.log();
 })
 
 // App Listening

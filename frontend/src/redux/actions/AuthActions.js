@@ -35,6 +35,7 @@ export const LoginUser = (credentials) => async (dispatch) => {
             withCredentials: true
         }
         const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/auth/login`, credentials, config)
+        console.log(2);
         dispatch({
             type: LOGIN_USER_SUCCESS,
             payload: data
