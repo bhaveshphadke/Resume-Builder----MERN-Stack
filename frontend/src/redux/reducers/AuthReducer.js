@@ -39,6 +39,10 @@ export const LoginReducer = (state = {}, action) => {
             })
 
         case LOGIN_USER_SUCCESS:
+            console.log(action.payload.token);
+            console.log(action.payload.token);
+            console.log(action.payload.token);
+            console.log(action.payload.token);
             localStorage.setItem('token', JSON.stringify(action.payload.token))
             return ({
                 success: true,

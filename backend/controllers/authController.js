@@ -39,7 +39,8 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     // sending response to the user and storing token into the cookies
     res.status(200).cookie('token', token).json({
         success: true,
-        message: 'User created successfully'
+        message: 'User created successfully',
+        token
     })
 })
 

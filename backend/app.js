@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use('/',express.static(path.join('build')));
 app.use(cors({
-    origin: ["http://localhost:3000","http://localhost:3001"],
+    origin: ["http://localhost:3000","http://localhost:3001",'https://resume-builder-4d2y.onrender.com'],
     credentials: true
 }));
 cloudinary.config({
