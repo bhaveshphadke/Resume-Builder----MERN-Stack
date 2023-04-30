@@ -9,7 +9,7 @@ import Signup from './components/Authentication/Signup';
 import PersonalInformation from './components/Resume/PersonalInformation';
 import Education from './components/Resume/Education';
 import Experience from './components/Resume/Experience';
-import Projects from './components/Resume/Projects';
+import Projects from './components/Resume/Projects'; 
 import Skills from './components/Resume/Skills';
 import Achievements from './components/Resume/Achievements';
 import { GetResumeAction } from './redux/actions/ResumeActions';
