@@ -9,8 +9,7 @@ export const BuldResumeAction =(html)=>async(dispatch)=>{
         
         const config = {
             headers:{
-                'Content-Type': 'application/json',
-                "token": localStorage.getItem('token')
+                'Content-Type':'application/json'
             },
             withCredentials:true
         }

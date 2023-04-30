@@ -24,7 +24,7 @@ exports.GenerateResume = async (user, url, htmldata) => {
     printBackground: true,
     format: 'A4',
   });
-  console.log(1);
+  
   const myCloud = await cloudinary.v2.uploader.upload(`./static/${user}.pdf`, {
     folder: "temp",
     format: "pdf",

@@ -10,7 +10,7 @@ exports.VerifyUser = CatchAsyncError(
     
     async(req,res,next)=>{
         // Getting token from the cookies
-        const {token} = req.cookies
+        const token = req.cookies.token || req.headers.token
         // verifying token
         if( token === 'j:null' ||token===undefined || token === null || !token){
             return next(errorHandler("Not Authorised please sign in with valid credentials",403))
