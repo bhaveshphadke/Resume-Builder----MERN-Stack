@@ -40,7 +40,7 @@ function App() {
 
       <Router>
       <ToastContainer/>
-        {window.location.pathname === '/temp' ? "" : <Navbar />}
+        <Navbar />
         <Routes>
 
           <Route exact path='/' element={<Home />}></Route>
