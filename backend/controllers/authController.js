@@ -10,6 +10,7 @@ const cloudinary = require('cloudinary')
 //Signup a User
 exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     // Taking All data from erquest 
+    console.log(1);
     const { username, password, email } = req.body
     // Verifying whether user exists with the entered Username
     let user = await Users.findOne({ username})
@@ -20,7 +21,6 @@ exports.SignupUser = CatchAsyncError(async (req, res, next) => {
     const output = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: 'a'
     })
-    console.log(1);
     // Hashing the password
     const HashedPassword = await bcrypt.hash(password, 10)
 

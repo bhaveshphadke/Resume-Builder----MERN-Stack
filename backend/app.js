@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use('/',express.static(path.join('build')));
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000","http://localhost:3001"],
     credentials: true
 }));
 cloudinary.config({
