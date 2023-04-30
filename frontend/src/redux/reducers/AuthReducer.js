@@ -9,7 +9,6 @@ export const VerifyUserReducer = (state = {}, action) => {
             })
 
         case VERIFY_USER_SUCCESS:
-            // console.log(action.payload);
             return ({
                 success: true,
                 loading: false,
@@ -40,6 +39,7 @@ export const LoginReducer = (state = {}, action) => {
             })
 
         case LOGIN_USER_SUCCESS:
+            localStorage.setItem('token', JSON.stringify(action.payload.token))
             return ({
                 success: true,
                 loading: false,
@@ -51,7 +51,7 @@ export const LoginReducer = (state = {}, action) => {
                 success: false,
                 loading: false,
                 loggedin: false,
-                message:"Invalid username or password"
+                message: "Invalid username or password"
             })
 
         default:
@@ -68,11 +68,11 @@ export const SignupUserReducer = (state = {}, action) => {
                 loading: true
             })
         case SIGNUP_USER_SUCCESS:
-
+            localStorage.setItem('token', JSON.stringify(action.payload.token))
             return ({
                 success: true,
                 loading: false,
-                signup:true
+                signup: true
 
             })
         case SIGNUP_USER_FAIL:
@@ -80,8 +80,8 @@ export const SignupUserReducer = (state = {}, action) => {
             return ({
                 success: false,
                 loading: false,
-                signup:false,
-                message:"Internal Server Error! Please refill the details."
+                signup: false,
+                message: "Internal Server Error! Please refill the details."
             })
         default:
             return state
@@ -94,7 +94,7 @@ export const ChangeProfileReducer = (state = {}, action) => {
             return ({
                 success: false,
                 loading: true,
-                message:"Profile Picture Changed Successfully!!"
+                message: "Profile Picture Changed Successfully!!"
             })
         case CHANGE_PROFILE_PICTURE_SUCCESS:
 
@@ -108,7 +108,7 @@ export const ChangeProfileReducer = (state = {}, action) => {
             return ({
                 success: false,
                 loading: false,
-                message:"Internal Server Error! Please refill the details."
+                message: "Internal Server Error! Please refill the details."
             })
         default:
             return state
@@ -118,7 +118,7 @@ export const ChangeProfileReducer = (state = {}, action) => {
 export const SignoutUserReducer = (state = {}, action) => {
     switch (action.type) {
         case SIGNOUT:
-
+            localStorage.removeItem('token')
             return ({
                 success: true
             })

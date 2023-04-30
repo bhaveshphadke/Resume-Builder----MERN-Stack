@@ -6,7 +6,11 @@ export const VerifyUser = () => async (dispatch) => {
             type: VERIFY_USER
         })
         const config = {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
+            }
         }
         const { data } = await axios.get(`${process.env.REACT_APP_API_HOST}/auth/verifyuser`, config)
         console.log('data');
@@ -31,7 +35,10 @@ export const LoginUser = (credentials) => async (dispatch) => {
             type: LOGIN_USER
         })
         const config = {
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
+            },
             withCredentials: true
         }
         const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/auth/login`, credentials, config)
@@ -57,10 +64,11 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
             email: credentials.email,
             avatar
         }
-        console.log(avatar);
-        console.log(`${process.env.REACT_APP_API_HOST}/auth/signup`);
         const config = {
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
+            },
             withCredentials: true
         }
         const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/auth/signup`, userData, config)
@@ -76,7 +84,7 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
 }
 
 
-export const ChangeProfilePicture = ( avatar) => async (dispatch) => {
+export const ChangeProfilePicture = (avatar) => async (dispatch) => {
     try {
         dispatch({
             type: CHANGE_PROFILE_PICTURE
@@ -86,7 +94,10 @@ export const ChangeProfilePicture = ( avatar) => async (dispatch) => {
         }
         // console.log(avatar);
         const config = {
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
+            },
             withCredentials: true
         }
         const { data } = await axios.put(`${process.env.REACT_APP_API_HOST}/auth/changeprofilepicture`, userData, config)
@@ -105,12 +116,13 @@ export const ChangeProfilePicture = ( avatar) => async (dispatch) => {
 export const LogoutUser = () => async (dispatch) => {
 
     const config = {
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            "token": localStorage.getItem('token')
+        },
         withCredentials: true
     }
     const { data } = await axios.delete(`${process.env.REACT_APP_API_HOST}/auth/signout`, config)
-    console.log(data);
-    console.log(1);
     dispatch({
         type: SIGNOUT
     })

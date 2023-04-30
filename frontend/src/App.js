@@ -34,12 +34,7 @@ function App() {
   useEffect(() => {
     dispatch(VerifyUser())
     dispatch(GetResumeAction())
-    console.log(1);
   }, [dispatch])
-
-  useEffect(()=>{
-    localStorage.setItem('token','Token')
-  })
   return (
     <>
 

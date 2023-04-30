@@ -9,7 +9,8 @@ export const PersonalInformationAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -33,7 +34,8 @@ export const EducationAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -61,7 +63,8 @@ export const ExperienceAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -86,7 +89,8 @@ export const ProjectsAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -112,7 +116,8 @@ export const SkillsAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -138,7 +143,8 @@ export const AchievementAction = (userData) => async (dispatch) => {
 
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials: true
         }
@@ -165,7 +171,8 @@ export const GetResumeAction = () => async (dispatch) => {
 
         const config = {
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json',
+                "token": localStorage.getItem('token')
             },
             withCredentials:true
         }
