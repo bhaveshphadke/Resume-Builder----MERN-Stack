@@ -9,7 +9,7 @@ export const VerifyUser = () => async (dispatch) => {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
-                "token": localStorage.getItem('token')
+                "token":JSON.parse(localStorage.getItem('token'))
             }
         }
         const { data } = await axios.get(`${process.env.REACT_APP_API_HOST}/auth/verifyuser`, config)
@@ -37,7 +37,7 @@ export const LoginUser = (credentials) => async (dispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                "token": localStorage.getItem('token')
+                "token":JSON.parse(localStorage.getItem('token'))
             },
             withCredentials: true
         }
@@ -67,7 +67,7 @@ export const SignupUser = (credentials, avatar) => async (dispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                "token": localStorage.getItem('token')
+                "token":JSON.parse(localStorage.getItem('token'))
             },
             withCredentials: true
         }
@@ -96,7 +96,7 @@ export const ChangeProfilePicture = (avatar) => async (dispatch) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                "token": localStorage.getItem('token')
+                "token":JSON.parse(localStorage.getItem('token'))
             },
             withCredentials: true
         }
@@ -118,7 +118,7 @@ export const LogoutUser = () => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            "token": localStorage.getItem('token')
+            "token":JSON.parse(localStorage.getItem('token'))
         },
         withCredentials: true
     }
