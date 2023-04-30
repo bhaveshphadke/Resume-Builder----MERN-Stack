@@ -19,8 +19,9 @@ connectToMongo()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use('/',express.static(path.join('build')));
 app.use(cors({
-    origin: ["http://localhost:3000","http://localhost:3001",'https://resume-builder-4d2y.onrender.com','https://resume-bui-der-web.onrender.com/'],
+    origin: ["http://localhost:3000","http://localhost:3001",'https://resume-builder-4d2y.onrender.com','https://resume-bui-der-web.onrender.com'],
     credentials: true
 }));
 cloudinary.config({
@@ -50,6 +51,11 @@ app.use('/api/v1/build', buildRouter)
 
 // Post Middleware
 app.use(error)
+
+app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'build','index.html'))
+    // console.log();
+})
 
 // App Listening
 app.listen(PORT, (err) => {
